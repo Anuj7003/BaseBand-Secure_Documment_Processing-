@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { 
+  --navy:#172554; 
+  --ink:#0f172a; 
+  --muted:#64748b; 
+  --line:#dbe4ef; 
+  --paper:#f5f8fc; 
+  --blue:#1e3a8a; 
+  --sky:#0284c7; 
+  --red:#b91c1c; 
+  --green:#15803d; 
+}
+
+* { box-sizing: border-box; }
+
+body { 
+  margin: 0; 
+  color: var(--ink); 
+  background: var(--paper); 
+  font-family: 'IBM Plex Sans', sans-serif; 
+  -webkit-font-smoothing: antialiased; 
+}
+
+button, input { font: inherit; } 
+button { cursor: pointer; } 
+a { color: inherit; text-decoration: none; }
+.side-top {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px 0 !important;
+  gap: 12px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-button {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s;
+}
+
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.mini-crest {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.info-cell span {
+  font-size: 13px !important; /* Chote label ka size */
+  color: #475569 !important;
+}
+.info-cell strong {
+  font-size: 16px !important; 
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+.security-panel .action-stack button {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+.hash-box code {
+  font-size: 13px !important;
+}
+.table-row, .document-row, .version-row {
+  font-size: 15px !important;
+}
+.table-row strong, .document-row strong, .version-row strong {
+  font-size: 16px !important;
+}
+.table-row small, .document-row span, .version-row span {
+  font-size: 13px !important;
+}
+.audit-line strong, .audit-table-row strong {
+  font-size: 15px !important;
+}
+.audit-line p, .audit-table-row small, .audit-table-row .date-cell {
+  font-size: 13px !important;
+}
+
+.metric strong {
+  font-size: 26px !important;
+}
+.metric-label {
+  font-size: 14px !important;
+}
+.metric-note {
+  font-size: 12px !important;
+}
+.page-heading h1 {
+  font-size: 28px !important;
+}
+.page-heading p {
+  font-size: 15px !important;
+}
+.info-cell span {
+  font-size: 13px !important;
+  color: #475569 !important;
+}
+.info-cell strong {
+  font-size: 16px !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+button {
+  font-size: 15px !important;
+}
+/* =========================================================
+   RESPONSIVE DESIGN (MOBILE, TABLET & DESKTOP FIT)
+========================================================= */
+
+/* Tablet aur choti screens ke liye (max 1024px) */
+@media screen and (max-width: 1024px) {
+  .dashboard-columns {
+    display: grid;
+    grid-template-columns: 1fr !important; /* Dono columns ek ke neeche ek aayenge */
+    gap: 20px;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile screens ke liye (max 768px) */
+@media screen and (max-width: 768px) {
+  /* Page Padding aur Fonts */
+  .page {
+    padding: 15px !important;
+  }
+  
+  h1 {
+    font-size: 24px !important;
+  }
+  
+  /* Metrics Grid (Total Cases, Alerts etc) - Mobile par 1 column */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+
+  /* Table ko scrollable banaye taaki design kharab na ho */
+  .table-panel, .audit-table {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* Sidebar adjustment for mobile */
+  .sidebar {
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+    transition: 0.3s ease;
+  }
+  
+  .sidebar:not(.expanded) {
+    width: 60px; /* Chota sidebar mobile par */
+  }
+
+  /* Topbar adjustment */
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .top-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* AI Widget ko mobile ke hisaab se chota karna */
+  .ai-chat-window {
+    width: 90vw !important;
+    height: 60vh !important;
+    bottom: 80px !important;
+    right: 5vw !important;
+  }
+}
+
+/* Smart Grid for extra small devices */
+@media screen and (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .info-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .violation-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+}
+/* =========================================================
+   STICKY SIDEBAR (SCROLL KARNE PAR SIDEBAR FIXED RAHEGA)
+========================================================= */
+
+.sidebar {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important; /* Screen ki poori height lega */
+  overflow-y: auto !important; /* Agar choti screen ho toh sirf sidebar apne andar scroll ho */
+}
+
+/* Sidebar ke andar scrollbar ko hide karne ke liye (clean look) */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* =========================================================
+   STICKY TOPBAR (SCROLL KARNE PAR HEADER FIXED RAHEGA)
+========================================================= */
+
+.topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important; /* Isse header hamesha content ke upar rahega */
+  background-color: #ffffff !important; /* Scroll hone par peeche ka text na dikhe */
+  /* Agar pehle se shadow ya border nahi hai, toh ek light border add kar dete hain */
+  border-bottom: 1px solid #e2e8f0; 
+}
+/* =========================================================
+   DEPARTMENT HOVER EFFECT
+========================================================= */
+
+.department {
+  transition: all 0.2s ease-in-out !important;
+}
+
+.department:hover .dept-text {
+  transform: scale(1.06); /* Text ko thoda bada karega */
+  transform-origin: left center;
+  color: #ffffff !important; /* Hover par text thoda aur bright white ho jayega */
+  font-weight: 500;
+}
+
+.dept-text {
+  transition: all 0.2s ease-in-out;
+  display: inline-block; /* Scale transform ke liye inline-block zaroori hai */
+}
